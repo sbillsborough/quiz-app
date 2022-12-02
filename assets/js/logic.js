@@ -8,10 +8,10 @@ function startQuiz() {
 
   <div class="wrapper">
   <h2>Which of these is NOT a valid JavaScript data type?</h2>
-  <button>1. Variable</button>
-  <button>2. String</button>
-  <button>3. Number</button>
-  <button>4. Null</button>
+  <button onclick="correct()">1. Variable</button>
+  <button onclick="incorrect()">2. String</button>
+  <button onclick="incorrect()">3. Number</button>
+  <button onclick="incorrect()">4. Null</button>
   </div>
   `;
 }

@@ -1,17 +1,32 @@
 document.getElementById("start").addEventListener("click", startQuiz);
 
+time = 60;
+
+score = 0;
+console.log(score);
+function correctAnswer() {
+  score += 10;
+  console.log(score);
+}
+
+function incorrectAnswer() {
+  console.log(score);
+  score -= 10;
+  console.log(score);
+}
+
 function startQuiz() {
   document.body.innerHTML = `
   <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-  <div class="timer">Time: <span id="time">0</span></div>
+  <div class="timer">Time: <span id="time">${time}</span></div>
 
   <div class="wrapper">
   <h2>Which of these is NOT a valid JavaScript data type?</h2>
-  <button onclick="correct()">1. Variable</button>
-  <button onclick="incorrect()">2. String</button>
-  <button onclick="incorrect()">3. Number</button>
-  <button onclick="incorrect()">4. Null</button>
+  <button onclick="correctAnswer()">1. Variable</button>
+  <button onclick="incorrectAnswer()">2. String</button>
+  <button onclick="incorrectAnswer()">3. Number</button>
+  <button onclick="incorrectAnswer()">4. Null</button>
   </div>
   `;
 }

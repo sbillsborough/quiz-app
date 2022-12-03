@@ -1,8 +1,8 @@
 document.getElementById("start").addEventListener("click", startQuiz);
 
-time = 60;
+var time = 60;
 
-score = 0;
+var score = 0;
 console.log(score);
 function correctAnswer() {
   score += 10;

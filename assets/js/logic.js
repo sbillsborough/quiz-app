@@ -3,7 +3,7 @@ var unHide = document.getElementById("questions");
 var counting = document.getElementById("time");
 
 var time = 59;
-
+var timer = "";
 var score = 0;
 
 function startQuiz() {
@@ -19,7 +19,7 @@ function startQuiz() {
   `;
   unHide.classList.remove("hide");
 
-  var timer = setInterval(function () {
+  timer = setInterval(function () {
     counting.innerText = time;
     console.log(time);
     time--;
@@ -35,7 +35,7 @@ function correctAnswer() {
   score += 10;
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
-  <h2>How do you get "22"?</h2>
+  <h2>How do you print "22" to the console? console.log(______);</h2>
   <button onclick="incorrectAnswerTwo()">1. 2++</button>
   <button onclick="correctAnswerTwo()">2. "2" + "2"</button>
   <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
@@ -47,7 +47,7 @@ function incorrectAnswer() {
   time -= 10;
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
-  <h2>How do you get "22"?</h2>
+  <h2>How do you print "22" to the console? console.log(______);</h2>
   <button onclick="incorrectAnswerTwo()">1. 2++</button>
   <button onclick="correctAnswerTwo()">2. "2" + "2"</button>
   <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
@@ -81,6 +81,7 @@ function incorrectAnswerTwo() {
 
 function finalAnswerCorrect() {
   score += 10;
+  clearInterval(timer);
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
   console.log(`High score: ${highScore}`);
@@ -94,11 +95,11 @@ function finalAnswerCorrect() {
       </p>
     </div>
   `;
-  // window.location = "highscores.html";
 }
 
 function finalAnswerIncorrect() {
   time -= 10;
+  clearInterval(timer);
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
   console.log(`High finalpage score: ${highScore}`);
@@ -112,7 +113,6 @@ function finalAnswerIncorrect() {
       </p>
     </div>
   `;
-  // window.location = "highscores.html";
 }
 
 function submitScore(initials) {

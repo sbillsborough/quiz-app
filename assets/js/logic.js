@@ -4,16 +4,6 @@ var counting = document.getElementById("time");
 
 var time = 60;
 
-// var timer = setInterval(function () {
-//   document.body.innerText = time;
-//   console.log(time);
-//   time--;
-
-//   if (time === 0) {
-//     clearTimeout(timer);
-//   }
-// }, 1000);
-
 var score = 0;
 
 function startQuiz() {
@@ -34,7 +24,7 @@ function startQuiz() {
     console.log(time);
     time--;
 
-    if (time === 0) {
+    if (time < 0) {
       clearTimeout(timer);
     }
   }, 1000);
@@ -53,6 +43,7 @@ function correctAnswer() {
 }
 
 function incorrectAnswer() {
+  time -= 10;
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>How do you get "22"?</h2>
@@ -76,6 +67,7 @@ function correctAnswerTwo() {
 }
 
 function incorrectAnswerTwo() {
+  time -= 10;
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>What does 'ES6' stand for?</h2>
@@ -105,6 +97,7 @@ function finalAnswerCorrect() {
 }
 
 function finalAnswerIncorrect() {
+  time -= 10;
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
   console.log(`High finalpage score: ${highScore}`);

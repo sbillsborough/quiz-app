@@ -93,7 +93,7 @@ function finalAnswerCorrect() {
 function finalAnswerIncorrect() {
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
-  console.log(`High score: ${highScore}`);
+  console.log(`High finalpage score: ${highScore}`);
   document.getElementById("questions").innerHTML = `
   <div id="end-screen">
       <h2>All done!</h2>
@@ -105,4 +105,10 @@ function finalAnswerIncorrect() {
     </div>
   `;
   // window.location = "highscores.html";
+}
+
+function submitScore(initials) {
+  var userInitials = document.getElementById("initials").value;
+  localStorage.setItem("initials", userInitials);
+  window.location = "highscores.html";
 }

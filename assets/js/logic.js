@@ -75,10 +75,34 @@ function finalAnswerCorrect() {
   score += 10;
   console.log(score);
   localStorage.setItem("highScore", score);
-  window.location = "highscores.html";
+  var highScore = localStorage.getItem("highScore");
+  console.log(`High score: ${highScore}`);
+  document.getElementById("questions").innerHTML = `
+  <div id="end-screen">
+      <h2>All done!</h2>
+      <p>Your final score is <span id="final-score">${highScore}</span>.</p>
+      <p>
+        Enter initials: <input type="text" id="initials" max="3" />
+        <button id="submit" onclick="submitScore()">Submit</button>
+      </p>
+    </div>
+  `;
+  // window.location = "highscores.html";
 }
 
 function finalAnswerIncorrect() {
   localStorage.setItem("highScore", score);
-  window.location = "highscores.html";
+  var highScore = localStorage.getItem("highScore");
+  console.log(`High score: ${highScore}`);
+  document.getElementById("questions").innerHTML = `
+  <div id="end-screen">
+      <h2>All done!</h2>
+      <p>Your final score is <span id="final-score">${highScore}</span>.</p>
+      <p>
+        Enter initials: <input type="text" id="initials" max="3" />
+        <button id="submit" onclick="submitScore()">Submit</button>
+      </p>
+    </div>
+  `;
+  // window.location = "highscores.html";
 }

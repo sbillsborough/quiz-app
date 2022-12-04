@@ -16,11 +16,7 @@ function incorrectAnswer() {
 }
 
 function startQuiz() {
-  document.body.innerHTML = `
-  <div class="scores"><a href="highscores.html">View Highscores</a></div>
-
-  <div class="timer">Time: <span id="time">${time}</span></div>
-
+  document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>Which of these is NOT a valid JavaScript data type?</h2>
   <button onclick="correctAnswer()">1. Variable</button>
@@ -29,4 +25,6 @@ function startQuiz() {
   <button onclick="incorrectAnswer()">4. Null</button>
   </div>
   `;
+  var unHide = document.getElementById("questions");
+  unHide.classList.remove("hide");
 }

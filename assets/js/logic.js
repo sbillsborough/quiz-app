@@ -5,57 +5,6 @@ var time = 60;
 
 var score = 0;
 
-function correctAnswer() {
-  score += 10;
-  console.log(score);
-  document.getElementById("questions").innerHTML = `
-  <div class="wrapper">
-  <h2>How do you get 22?</h2>
-  <button onclick="incorrectAnswerTwo()">1. 2++</button>
-  <button onclick="questionTwo()">2. 2 + 2</button>
-  <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
-
-  </div>`;
-}
-
-function questionTwo() {
-  score += 10;
-  console.log(score);
-  document.getElementById("questions").innerHTML = `
-  <div class="wrapper">
-  <h2>What does 'ES6' stand for?</h2>
-  <button onclick="">1. Elegant Syntax 6</button>
-  <button onclick="">2. ECMA Script 6</button>
-  <button onclick="">3. Elder Scrolls 6</button>
-
-  </div>`;
-}
-
-function incorrectAnswer() {
-  score -= 10;
-  console.log(score);
-  document.getElementById("questions").innerHTML = `
-  <div class="wrapper">
-  <h2>How do you get 22?</h2>
-  <button onclick="incorrectAnswerTwo()">1. 2++</button>
-  <button onclick="questionTwo()">2. 2 + 2</button>
-  <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
-  </div>`;
-}
-
-function incorrectAnswerTwo() {
-  score -= 10;
-  console.log(score);
-  document.getElementById("questions").innerHTML = `
-  <div class="wrapper">
-  <h2>What does 'ES6' stand for?</h2>
-  <button onclick="">1. Elegant Syntax 6</button>
-  <button onclick="">2. ECMA Script 6</button>
-  <button onclick="">3. Elder Scrolls 6</button>
-
-  </div>`;
-}
-
 function startQuiz() {
   document.getElementById("start-screen").classList.add("hide");
   document.getElementById("questions").innerHTML = `
@@ -68,4 +17,68 @@ function startQuiz() {
   </div>
   `;
   unHide.classList.remove("hide");
+}
+
+function correctAnswer() {
+  score += 10;
+  console.log(score);
+  document.getElementById("questions").innerHTML = `
+  <div class="wrapper">
+  <h2>How do you get "22"?</h2>
+  <button onclick="incorrectAnswerTwo()">1. 2++</button>
+  <button onclick="correctAnswerTwo()">2. "2" + "2"</button>
+  <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
+
+  </div>`;
+}
+
+function incorrectAnswer() {
+  score -= 10;
+  console.log(score);
+  document.getElementById("questions").innerHTML = `
+  <div class="wrapper">
+  <h2>How do you get "22"?</h2>
+  <button onclick="incorrectAnswerTwo()">1. 2++</button>
+  <button onclick="correctAnswerTwo()">2. "2" + "2"</button>
+  <button onclick="incorrectAnswerTwo()">3. 2 += 2</button>
+  </div>
+  `;
+}
+
+function correctAnswerTwo() {
+  score += 10;
+  console.log(score);
+  document.getElementById("questions").innerHTML = `
+  <div class="wrapper">
+  <h2>What does 'ES6' stand for?</h2>
+  <button onclick="finalAnswerIncorrect()">1. Elegant Syntax 6</button>
+  <button onclick="finalAnswerCorrect()">2. ECMA Script 6</button>
+  <button onclick="finalAnswerIncorrect()">3. Elder Scrolls 6</button>
+  </div>
+  `;
+}
+
+function incorrectAnswerTwo() {
+  score -= 10;
+  console.log(score);
+  document.getElementById("questions").innerHTML = `
+  <div class="wrapper">
+  <h2>What does 'ES6' stand for?</h2>
+  <button onclick="finalAnswerIncorrect()">1. Elegant Syntax 6</button>
+  <button onclick="finalAnswerCorrect()">2. ECMA Script 6</button>
+  <button onclick="finalAnswerIncorrect()">3. Elder Scrolls 6</button>
+  </div>
+  `;
+}
+
+function finalAnswerCorrect() {
+  score += 10;
+  console.log(score);
+  localStorage.setItem("highScore", score);
+  window.location = "highscores.html";
+}
+
+function finalAnswerIncorrect() {
+  localStorage.setItem("highScore", score);
+  window.location = "highscores.html";
 }

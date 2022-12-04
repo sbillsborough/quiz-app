@@ -1,7 +1,18 @@
 document.getElementById("start").addEventListener("click", startQuiz);
 var unHide = document.getElementById("questions");
+var counting = document.getElementById("time");
 
 var time = 60;
+
+// var timer = setInterval(function () {
+//   document.body.innerText = time;
+//   console.log(time);
+//   time--;
+
+//   if (time === 0) {
+//     clearTimeout(timer);
+//   }
+// }, 1000);
 
 var score = 0;
 
@@ -17,11 +28,20 @@ function startQuiz() {
   </div>
   `;
   unHide.classList.remove("hide");
+
+  var timer = setInterval(function () {
+    counting.innerText = time;
+    console.log(time);
+    time--;
+
+    if (time === 0) {
+      clearTimeout(timer);
+    }
+  }, 1000);
 }
 
 function correctAnswer() {
   score += 10;
-  console.log(score);
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>How do you get "22"?</h2>
@@ -33,8 +53,6 @@ function correctAnswer() {
 }
 
 function incorrectAnswer() {
-  score -= 10;
-  console.log(score);
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>How do you get "22"?</h2>
@@ -47,7 +65,6 @@ function incorrectAnswer() {
 
 function correctAnswerTwo() {
   score += 10;
-  console.log(score);
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>What does 'ES6' stand for?</h2>
@@ -59,8 +76,6 @@ function correctAnswerTwo() {
 }
 
 function incorrectAnswerTwo() {
-  score -= 10;
-  console.log(score);
   document.getElementById("questions").innerHTML = `
   <div class="wrapper">
   <h2>What does 'ES6' stand for?</h2>
@@ -73,7 +88,6 @@ function incorrectAnswerTwo() {
 
 function finalAnswerCorrect() {
   score += 10;
-  console.log(score);
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
   console.log(`High score: ${highScore}`);

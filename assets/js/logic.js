@@ -2,7 +2,7 @@ document.getElementById("start").addEventListener("click", startQuiz);
 var unHide = document.getElementById("questions");
 var counting = document.getElementById("time");
 
-var time = 60;
+var time = 59;
 
 var score = 0;
 
@@ -26,6 +26,7 @@ function startQuiz() {
 
     if (time < 0) {
       clearTimeout(timer);
+      outOfTime();
     }
   }, 1000);
 }
@@ -118,4 +119,20 @@ function submitScore(initials) {
   var userInitials = document.getElementById("initials").value;
   localStorage.setItem("initials", userInitials);
   window.location = "highscores.html";
+}
+
+function outOfTime() {
+  localStorage.setItem("highScore", score);
+  var highScore = localStorage.getItem("highScore");
+  console.log(`High finalpage score: ${highScore}`);
+  document.getElementById("questions").innerHTML = `
+  <div id="end-screen">
+      <h2>Out of time. All done!</h2>
+      <p>Your final score is <span id="final-score">${highScore}</span>.</p>
+      <p>
+        Enter initials: <input type="text" id="initials" max="3" />
+        <button id="submit" onclick="submitScore()">Submit</button>
+      </p>
+    </div>
+  `;
 }

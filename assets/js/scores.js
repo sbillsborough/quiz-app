@@ -1,13 +1,13 @@
+// sets local storage items and user display to save highscore
 var highScore = localStorage.getItem("highScore");
-console.log(`High after submit score: ${highScore}`);
 var userInitials = localStorage.getItem("initials");
-console.log(`Initials after submit: ${userInitials}`);
 document.getElementById("highscores").innerHTML = `
 <ol>
   <li>${userInitials} - ${highScore}</li>
 </ol>
 `;
 
+// clears saved scores
 function clearScores() {
   document.getElementById("highscores").innerHTML = "";
   localStorage.clear();

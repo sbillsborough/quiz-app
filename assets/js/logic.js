@@ -1,11 +1,14 @@
+// bring in the unhide class, time and event listener to start the quiz
 document.getElementById("start").addEventListener("click", startQuiz);
 var unHide = document.getElementById("questions");
 var counting = document.getElementById("time");
 
+// global variables
 var time = 59;
 var timer = "";
 var score = 0;
 
+//  startQuiz function
 function startQuiz() {
   document.getElementById("start-screen").classList.add("hide");
   document.getElementById("questions").innerHTML = `
@@ -19,6 +22,7 @@ function startQuiz() {
   `;
   unHide.classList.remove("hide");
 
+  // timer
   timer = setInterval(function () {
     counting.innerText = time;
     console.log(time);
@@ -31,6 +35,7 @@ function startQuiz() {
   }, 1000);
 }
 
+// correct and incorrect answer functions which adds the html to the DOM
 function correctAnswer() {
   score += 10;
   document.getElementById("questions").innerHTML = `
@@ -115,12 +120,14 @@ function finalAnswerIncorrect() {
   `;
 }
 
+// submit score function
 function submitScore(initials) {
   var userInitials = document.getElementById("initials").value;
   localStorage.setItem("initials", userInitials);
   window.location = "highscores.html";
 }
 
+// function that ends game when time runs out
 function outOfTime() {
   localStorage.setItem("highScore", score);
   var highScore = localStorage.getItem("highScore");
